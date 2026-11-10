@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Тестовые учётные записи: поиск, фильтры и копирование полей.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Хранилище учёток для теста</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./core.js" defer></script>
+  <script src="./celebration.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <aside class="sidebar" aria-label="Боковое меню">
+    <a class="brand" href="#welcome" aria-label="На главную"><span class="brand-symbol">✳</span><span>Хранилище<br>учёток<span class="brand-small">для теста</span></span></a>
+    <nav aria-label="Разделы">
+      <button class="nav-item" data-view="welcome"><span>✷</span> Главная <span class="nav-arrow">↗</span></button>
+      <button class="nav-item active" data-view="catalog" aria-current="page"><span>▦</span> Учётные записи <span class="nav-arrow">↗</span></button>
+      <button class="nav-item" data-view="help"><span>?</span> Как это работает <span class="nav-arrow">↗</span></button>
+    </nav>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><button id="finish" class="button finish">Тест завершен <span aria-hidden="true">✦</span></button></header>
+    <main id="main" tabindex="-1">
+      <section id="welcome" class="view" hidden aria-labelledby="welcome-title">
+        <div class="hero">
+          <div class="hero-copy"><h1 id="welcome-title">Хранилище<br><em>учёток для теста</em><span class="title-star" aria-hidden="true">✧</span></h1><p class="intro">Нужная учётка — за пару кликов.</p><button id="start" class="button primary">Начать тесты <span>↗</span></button></div>
+          <div class="orbit-art" aria-hidden="true"><div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div><div class="orbit-ring ring-three"></div><div class="orbit-center"><div class="cat-face"><i class="ear left"></i><i class="ear right"></i><span>• ᴥ •</span><b>⌣</b></div><span class="orbit-caption">НА ОРБИТЕ<br>ХОРОШИХ ТЕСТОВ</span></div><span class="art-star star-one">✦</span><span class="art-star star-two">✳</span><span class="art-spark">✧</span><span class="art-label">всё под лапой!</span></div>
+        </div>
+        <div class="ticker" aria-hidden="true"><span>НАЙДИ НУЖНУЮ УЧЁТКУ</span><b>✳</b><span>КОПИРУЙ В ОДИН КЛИК</span><b>✳</b><span>ТЕСТИРУЙ С УДОВОЛЬСТВИЕМ</span><b>✳</b></div>
+      </section>
+      <section id="catalog" class="view" aria-labelledby="catalog-title">
+        <div class="section-heading"><div><h1 id="catalog-title" tabindex="-1">Учётные записи<span class="pink">✳</span></h1></div></div>
+        <div class="filter-panel"><label class="search-label" for="search">Найти учётную запись</label><div class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" maxlength="200" placeholder="Например, кредит или Иван Иванович" autocomplete="off" spellcheck="false"></div>
+        <div class="filter-top"><span>Фильтры</span><button id="reset" class="text-button">Сбросить всё ↺</button></div>
+        <div id="all-filter"><button id="all" class="chip selected" aria-pressed="true">Все</button></div>
+        <fieldset><legend>Продукты</legend><div id="product-filters" class="chips"></div></fieldset>
+        <fieldset><legend>Статусы клиента</legend><div id="status-filters" class="chips"></div></fieldset>
+        <fieldset><legend>Доступность</legend><div id="availability-filters" class="chips"><span class="availability-option"><button class="chip" data-availability="available" aria-pressed="false" aria-describedby="available-tip">Доступная</button><span id="available-tip" class="availability-tooltip" role="tooltip">Учётная запись активна.</span></span><span class="availability-option"><button class="chip" data-availability="unavailable" aria-pressed="false" aria-describedby="unavailable-tip">Недоступная</button><span id="unavailable-tip" class="availability-tooltip" role="tooltip">Учётная запись неактивна: требуется обновить пароль, есть блокировка или другая причина недоступности.</span></span></div></fieldset>
+</div>
+        <div class="results-bar"><h2 id="result-count" role="status" aria-live="polite">Готовим каталог</h2><div class="grid-switch" role="group" aria-label="Количество карточек в ряду"><span>В ряду</span><button type="button" data-columns-choice="3" aria-label="3 карточки в ряду" aria-pressed="true">3</button><button type="button" data-columns-choice="4" aria-label="4 карточки в ряду" aria-pressed="false">4</button></div></div>
+        <div id="loading" class="state-panel" role="status" hidden><div class="loading-cat" aria-hidden="true"><div class="cat-face"><i class="ear left"></i><i class="ear right"></i><span>• ᴥ •</span></div><i class="spinner"></i></div><h3>Кот собирает учётки…</h3><p>Ещё немного, и всё будет под лапой.</p></div>
+        <div id="error" class="state-panel error-state" role="alert" hidden><span class="state-icon">!</span><h3>Каталог пока недоступен</h3><p id="error-message"></p><button id="retry" class="button primary">Попробовать ещё раз ↻</button></div>
+        <div id="empty" class="state-panel" hidden><div class="mini-cat">=^･ω･^=</div><h3>Такая учётка пока не нашлась</h3><p>Попробуйте убрать часть условий или изменить запрос.</p><button id="empty-reset" class="button primary">Показать все учётки ↗</button></div>
+        <div id="cards" class="cards" data-columns="3" aria-busy="false"></div>
+      </section>
+      <section id="help" class="view help" hidden aria-labelledby="help-title">
+        <h1 id="help-title" tabindex="-1">Всё просто<span class="pink">✳</span></h1>
+        <ol class="help-flow"><li>Найди нужную учётную запись</li><li>Скопируй данные</li><li>Начинай тестировать</li></ol>
+        <hr class="help-divider">
+        <p class="help-description">Это статичный каталог тестовых клиентов. Данные загружаются из JSON-файла в папке проекта.</p>
+        <p class="help-description">Чтобы изменить клиента, открой <code>src/data/test_clients_simple.json</code>, внеси правки и обнови локальную страницу.</p>
+      </section>
+    </main>
+    <footer><span>Демонстрационная версия · вымышленные учётки</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="celebration-layer" class="celebration-layer" aria-hidden="true"></div>
+  <dialog id="manual-copy" aria-labelledby="copy-title"><button class="dialog-close" data-close aria-label="Закрыть">×</button><h2 id="copy-title">Скопируйте вручную</h2><p>Браузер ограничил буфер обмена. Выделите значение и нажмите Ctrl+C или удерживайте текст на телефоне.</p><label for="copy-value">Значение поля</label><textarea id="copy-value" readonly rows="3" spellcheck="false"></textarea><button class="button primary" data-close>Готово</button></dialog>
+  <noscript><div class="noscript">Для поиска и копирования включите JavaScript.</div></noscript>
+</body>
+</html>

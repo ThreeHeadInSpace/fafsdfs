@@ -1,0 +1,113 @@
+{
+  "clients": [
+    {
+      "name": "Тестова Алиса Демонстрационная",
+      "login": "DEMO-LOGIN-001",
+      "password": "DEMO-PASSWORD-001",
+      "id": "DEMO-ID-001",
+      "products": [
+        "Потребительский кредит",
+        "Кредитная карта (просрочка)"
+      ],
+      "available": true
+    },
+    {
+      "name": "Примеров Борис Учебный",
+      "login": "DEMO-LOGIN-002",
+      "password": "DEMO-PASSWORD-002",
+      "id": "DEMO-ID-002",
+      "products": [
+        "Дебетовая карта",
+        "Вклад",
+        "Арест ФССП"
+      ],
+      "available": true,
+      "other_passwords": [
+        "DEMO-ALTERNATIVE-002"
+      ]
+    },
+    {
+      "name": "Макетова Вера Пробная",
+      "login": "DEMO-LOGIN-003",
+      "password": "DEMO-PASSWORD-003",
+      "id": "DEMO-ID-003",
+      "products": [
+        "Подписка",
+        "Накопительный счёт"
+      ],
+      "available": true
+    },
+    {
+      "name": "Демов Глеб Условный",
+      "login": "DEMO-LOGIN-004",
+      "password": "DEMO-PASSWORD-004",
+      "id": "DEMO-ID-004",
+      "products": [],
+      "available": true,
+      "no_products": true
+    },
+    {
+      "name": "Учебная Дарья Тестовая",
+      "login": "DEMO-LOGIN-005",
+      "password": "DEMO-PASSWORD-005",
+      "id": "DEMO-ID-005",
+      "products": [
+        "Заблокированная кредитная карта",
+        "Дебетовая карта"
+      ],
+      "available": true
+    },
+    {
+      "name": "Сценариев Егор Примерный",
+      "login": "DEMO-LOGIN-006",
+      "password": "DEMO-PASSWORD-006",
+      "id": "DEMO-ID-006",
+      "products": [
+        "Обезличенный металлический счёт"
+      ],
+      "available": true
+    },
+    {
+      "name": "Пробная Жанна Макетная",
+      "login": "DEMO-LOGIN-007",
+      "password": "DEMO-PASSWORD-007",
+      "id": "DEMO-ID-007",
+      "products": [
+        "Ипотечный кредит",
+        "Арест ФНС"
+      ],
+      "available": true
+    },
+    {
+      "name": "Условнов Захар Демонстрационный",
+      "login": "DEMO-LOGIN-008",
+      "password": "DEMO-PASSWORD-008",
+      "id": "DEMO-ID-008",
+      "products": [],
+      "available": true
+    },
+    {
+      "name": "Демонстрационная Инна Учебная",
+      "login": "DEMO-LOGIN-009",
+      "password": "DEMO-PASSWORD-009",
+      "id": "DEMO-ID-009",
+      "products": [
+        "Вклад",
+        "Подписка"
+      ],
+      "available": false,
+      "access_note": "Демонстрационная причина: вход в учётную запись заблокирован."
+    },
+    {
+      "name": "Образцов Кирилл Тестовый",
+      "login": "DEMO-LOGIN-010",
+      "password": null,
+      "id": "DEMO-ID-010",
+      "products": [
+        "Кредитная карта"
+      ],
+      "available": false,
+      "access_note": "Демонстрационная учётка без основного пароля."
+    }
+  ]
+}
